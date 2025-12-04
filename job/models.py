@@ -15,9 +15,13 @@ class Job (models.Model):    #Table
     published_at = models.DateTimeField(auto_now=True)
     vacancy = models.IntegerField(default=1)
     salary = models.IntegerField(default=0)
-    #catagory
+    catagory = models.ForeignKey('Catagory',on_delete=models.CASCADE)
     experience = models.IntegerField(default=1)
     def __str__(self):
         return self.title
     
+class Catagory (models.Model):
+    name = models.CharField(max_length=25)
     
+    def __str__(self):
+        return self.name
